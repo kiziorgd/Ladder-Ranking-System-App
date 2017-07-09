@@ -137,7 +137,7 @@ class Ladder
     /**
      * Get players
      *
-     * @return array
+     * @return ArrayCollection
      */
     public function getPlayers()
     {
