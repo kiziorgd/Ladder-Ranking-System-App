@@ -22,12 +22,14 @@ class Player
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="players")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Ladder")
+     * @ORM\ManyToOne(targetEntity="Ladder", inversedBy="players")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $ladder;
 
@@ -71,9 +73,9 @@ class Player
     }
 
     /**
-     * @param mixed $user
+     * @param User $user
      */
-    public function setUser($user)
+    public function setUser(User $user)
     {
         $this->user = $user;
     }
@@ -87,9 +89,9 @@ class Player
     }
 
     /**
-     * @param mixed $ladder
+     * @param Ladder $ladder
      */
-    public function setLadder($ladder)
+    public function setLadder(Ladder $ladder)
     {
         $this->ladder = $ladder;
     }

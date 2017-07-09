@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,12 +44,18 @@ class User
     private $name;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="players", type="array", nullable=true)
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="user")
      */
     private $players;
 
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->players = new ArrayCollection();
+    }
 
     /**
      * Get id

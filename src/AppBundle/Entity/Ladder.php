@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,9 +37,7 @@ class Ladder
     private $game;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="players", type="array", nullable=true)
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="ladder")
      */
     private $players;
 
@@ -49,6 +48,19 @@ class Ladder
      */
     private $rules;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Game", mappedBy="ladder")
+     */
+    private $matches;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->players = new ArrayCollection();
+        $this->matches = new ArrayCollection();
+    }
 
     /**
      * Get id
